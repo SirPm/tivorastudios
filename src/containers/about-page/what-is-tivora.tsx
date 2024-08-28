@@ -4,8 +4,8 @@ import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { Container } from "@/components/styled-components";
-import LightGreyIconSrc from "@/assets/icons/light-grey-bg.svg";
-import DarkGreyIconSrc from "@/assets/icons/dark-grey-bg.svg";
+import HeaderImg1 from "@/assets/icons/about-us-header-img-1.svg";
+import HeaderImg2 from "@/assets/icons/about-us-header-img-2.svg";
 
 export const WhatIsTivora = () => {
 	return (
@@ -39,11 +39,11 @@ export const WhatIsTivora = () => {
 					</TextWrapper>
 					<ImageWrapper>
 						<Image
-							src={LightGreyIconSrc}
+							src={HeaderImg1}
 							alt="light grey bg"
 						/>
 						<Image
-							src={DarkGreyIconSrc}
+							src={HeaderImg2}
 							alt="dark grey bg"
 						/>
 					</ImageWrapper>
@@ -54,7 +54,15 @@ export const WhatIsTivora = () => {
 };
 
 const Wrapper = styled.div`
-	margin: 70px auto 200px;
+	margin: 95px auto 200px;
+
+	@media screen and (max-width: 1200px) {
+		margin: 95px auto 90px;
+	}
+
+	@media screen and (max-width: 768px) {
+		margin: 50px auto;
+	}
 `;
 
 const Content = styled.div`
@@ -62,17 +70,23 @@ const Content = styled.div`
 	justify-content: space-between;
 	align-items: center;
 
-    @media screen and (max-width: 768px) {
-        flex-direction: column;
-    }
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+	}
 `;
 
 const TextWrapper = styled.div`
-	width: 60%;
+	width: 40%;
+	margin-left: 40px;
 
-    @media screen and (max-width: 768px) {
-       width: 100%;
-    }
+	@media screen and (max-width: 1100px) {
+		width: 50%;
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 100%;
+		margin-left: 0;
+	}
 `;
 
 const ImageWrapper = styled.div`
@@ -94,8 +108,12 @@ const ImageWrapper = styled.div`
 
 	img:nth-child(2) {
 		position: absolute;
-		left: 40%;
+		right: 0;
 		top: 40%;
+	}
+
+	@media screen and (max-width: 768px) {
+		display: none;
 	}
 `;
 
@@ -103,20 +121,39 @@ const Title = styled.h2`
 	font-size: 30px;
 	font-weight: 600;
 	margin-bottom: 50px;
+	width: 50%;
+
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
+
+	@media screen and (max-width: 768px) {
+		text-align: center;
+	}
 `;
 
 const Text = styled.p`
 	margin-bottom: 30px;
+
+	@media screen and (max-width: 768px) {
+		text-align: center;
+		line-height: 25px;
+	}
 `;
 
 const JoinBtn = styled.button`
-	background-color: #767676;
+	background-color: #ffb600;
 	color: #000000;
-	border-radius: 15px;
-	padding: 15px 25px;
-	font-size: 15px;
+	border-radius: 18px;
+	padding: 15px 36px;
+	font-size: 17px;
 	border: none;
 	outline: none;
 	cursor: pointer;
 	font-weight: 600;
+
+	@media screen and (max-width: 768px) {
+		display: block;
+		margin: auto;
+	}
 `;

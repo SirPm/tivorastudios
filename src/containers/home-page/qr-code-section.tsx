@@ -10,83 +10,80 @@ export const QrCodeSection = () => {
 	return (
 		<Wrapper>
 			<Container>
-				<MainContent>
-					<QrCodeWrapper>
-						<QrCode>
-							<Image
-								src={QrCodeIconSrc}
-								alt="Qr code"
-							/>
-						</QrCode>
-					</QrCodeWrapper>
-					<QrCodeInfoSection>
-						<QrCodeTitle>
-							<span>Unlock Endless Possibilities:</span> <br />
-							<span>Link Your QR Code to Any URL!</span>
-						</QrCodeTitle>
-						<QrCodeText>
+				<QrCodeInfoSection>
+					<QrCodeTitle>
+						<span>Unlock Endless Possibilities:</span> <br />
+						<span>Link Your QR Code to Any URL!</span>
+					</QrCodeTitle>
+					<QrCodeText>
+						<span>
 							Discover the magic of dynamic QR codes! Easily
-							connect your customers to any website, product page,
-							or exclusive content with a simple scan.
-						</QrCodeText>
-					</QrCodeInfoSection>
-				</MainContent>
+							connect your customers to any
+						</span>
+						<br />
+						<span>
+							website, product page, or exclusive content with a
+							simple scan.
+						</span>
+					</QrCodeText>
+				</QrCodeInfoSection>
 			</Container>
 		</Wrapper>
 	);
 };
 
 const Wrapper = styled.div`
-	background-color: #bababa;
-	margin: 60px auto;
-`;
-
-const QrCodeWrapper = styled.div`
-	width: 35%;
-
-	@media screen and (max-width: 768px) {
-		width: 100%;
-	}
-`;
-
-const QrCode = styled.div`
-	background-color: #d9d9d9;
-	border-radius: 16px;
-	padding: 30px 20px;
-	width: 300px;
-
-	img {
-		width: 100%;
-		height: 100%;
-	}
-`;
-
-const MainContent = styled.div`
-	padding: 50px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-	@media screen and (max-width: 768px) {
-		flex-direction: column;
-	}
+	background-color: #2e4846;
+	color: #ffffff;
+	margin: 0 auto 60px auto;
 `;
 
 const QrCodeInfoSection = styled.div`
-	width: 60%;
+	padding: 200px 0;
 
 	@media screen and (max-width: 768px) {
 		width: 100%;
-        margin-top: 50px;
+		max-width: 70%;
+		margin: auto;
+		padding: 150px 0;
 	}
 `;
 
 const QrCodeTitle = styled.h3`
-	font-size: 30px;
+	font-size: 45px;
 	font-weight: 600;
 	margin-bottom: 10px;
+	text-align: center;
+
+	@media screen and (max-width: 768px) {
+		font-size: 30px;
+
+		br {
+			display: none;
+		}
+
+		span {
+			margin-right: 3px;
+		}
+	}
 `;
 
 const QrCodeText = styled.p`
-	font-size: 18px;
+	font-size: 20px;
+	text-align: center;
+	line-height: 30px;
+	margin-top: 20px;
+
+	@media screen and (max-width: 768px) {
+		font-size: 16px;
+		line-height: 24px;
+
+		br {
+			display: none;
+		}
+
+		span {
+			margin-right: 3px;
+		}
+	}
 `;

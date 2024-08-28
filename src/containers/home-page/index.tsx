@@ -8,16 +8,18 @@ import { QrCodeSection } from "./qr-code-section";
 import { HowItWorks } from "./how-it-works";
 import { ShowCaseSection } from "./show-case-section";
 import { Footer } from "@/components/footer";
+import { SliderSection } from "./slider-section";
 
 export const HomePageContainer = () => {
 	return (
 		<div>
 			<Banner />
-			<NavigationBar isHomePage />
+			<NavigationBar />
 			<Header />
+			<ShowCaseSection />
+			<SliderSection />
 			<QrCodeSection />
 			<HowItWorks />
-			<ShowCaseSection />
 			<Footer />
 		</div>
 	);

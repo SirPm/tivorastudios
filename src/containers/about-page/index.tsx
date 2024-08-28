@@ -8,13 +8,14 @@ import { BlankSection } from "./blank-section";
 import { WhatIsTivora } from "./what-is-tivora";
 import { OutBeliefSystem } from "./our-belief-system";
 import { Spacer } from "@/components/styled-components";
+import { HeroSection } from "./hero-section";
 
 export const AboutPageContainer = () => {
 	return (
 		<div>
 			<Banner />
-			<NavigationBar isHomePage={false} />
-			<BlankSection />
+			<NavigationBar />
+			<HeroSection />
 			<WhatIsTivora />
 			<OutBeliefSystem />
 			<BlankSection />

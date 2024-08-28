@@ -3,9 +3,9 @@
 import React from "react";
 import styled from "styled-components";
 import Image, { StaticImageData } from "next/image";
-import PaintIconSrc from "@/assets/icons/paint.svg";
-import QrIconSrc from "@/assets/icons/qr-code.svg";
-import SustainabilityIconSrc from "@/assets/icons/sustainability.svg";
+import SelfServeDesignToolIcon from "@/assets/icons/self-serve-design-tool.svg";
+import SmartPackagingIcon from "@/assets/icons/smart-packaging.svg";
+import SustainabilityIconSrc from "@/assets/icons/sustainability-purple.svg";
 import TrackMgtIconSrc from "@/assets/icons/track-management.svg";
 import { Container } from "@/components/styled-components";
 
@@ -15,24 +15,24 @@ const SHOW_CASE_CONTENTS: {
 	text: string;
 }[] = [
 	{
-		image: PaintIconSrc,
+		image: SelfServeDesignToolIcon,
 		title: "SELF SERVE DESIGN TOOL",
-		text: "Choose from diverse templates, create from scratch, and design packaging that perfectly fits your brand!",
+		text: "Design packaging that perfectly fits your brand!",
 	},
 	{
-		image: QrIconSrc,
+		image: SmartPackagingIcon,
 		title: "SMART PACKAGING",
-		text: "Incorporate QR codes to promote different products, link to various aspects of your business, and track the effectiveness of your packaging",
+		text: "Incorporate QR codes to promote different products.",
 	},
 	{
 		image: SustainabilityIconSrc,
 		title: "SUSTAINABILITY",
-		text: "Eco-friendly packaging options that reduce your environmental footprint without compromising on quality.",
+		text: "Eco-friendly and sustainable material.",
 	},
 	{
 		image: TrackMgtIconSrc,
 		title: "TRACK ENGAGEMENT",
-		text: "Gain insights into customer engagement and behavior with detailed QR code analytics to make data-driven decisions",
+		text: "Gain insights into customer engagement and behaviour.",
 	},
 ];
 
@@ -40,52 +40,40 @@ export const ShowCaseSection = () => {
 	return (
 		<Wrapper>
 			<Container>
-				<Content>
-					<Title>
-						<span>Showcase your brand identity through your </span>
-						<br />
-						<span>packaging and understand your customers</span>
-					</Title>
-					<ShowCaseWrapper>
-						{SHOW_CASE_CONTENTS.map(
-							({ image, title, text }, sccidx) => (
-								<ShowCaseContent key={`${title}-${sccidx}`}>
-									<ImageWrapper>
-										<Image
-											src={image}
-											alt={`${title}'s icon`}
-										/>
-									</ImageWrapper>
+				<ShowCaseWrapper>
+					{SHOW_CASE_CONTENTS.map(
+						({ image, title, text }, sccidx) => (
+							<ShowCaseContent key={`${title}-${sccidx}`}>
+								<ImageWrapper>
+									<Image
+										src={image}
+										alt={`${title}'s icon`}
+									/>
+								</ImageWrapper>
+								<ShowCaseContentTextWrapper>
 									<ShowCaseContentTitle>
 										{title}
 									</ShowCaseContentTitle>
 									<ShowCaseContentText>
 										{text}
 									</ShowCaseContentText>
-								</ShowCaseContent>
-							)
-						)}
-					</ShowCaseWrapper>
-					<CtaSection>
-						<JoinBtn>Join the Community</JoinBtn>
-					</CtaSection>
-				</Content>
+								</ShowCaseContentTextWrapper>
+							</ShowCaseContent>
+						)
+					)}
+				</ShowCaseWrapper>
 			</Container>
 		</Wrapper>
 	);
 };
 
 const Wrapper = styled.div`
-	margin: 100px auto;
-`;
+	padding: 50px 0;
+	background-color: #e6e6fa;
 
-const Content = styled.div``;
-
-const Title = styled.h3`
-	font-size: 30px;
-	font-weight: 600;
-	text-align: center;
-	margin-bottom: 100px;
+	@media screen and (max-width: 768px) {
+		padding: 90px 0;
+	}
 `;
 
 const ShowCaseWrapper = styled.div`
@@ -95,12 +83,15 @@ const ShowCaseWrapper = styled.div`
 
 	@media screen and (max-width: 768px) {
 		flex-direction: column;
+		width: 100%;
+		max-width: 70%;
+		margin: auto;
 	}
 `;
 
 const ImageWrapper = styled.div`
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 
 	img {
 		width: 100%;
@@ -111,8 +102,6 @@ const ImageWrapper = styled.div`
 const ShowCaseContent = styled.div`
 	width: 24%;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
 
 	@media screen and (max-width: 768px) {
 		width: 100%;
@@ -124,30 +113,17 @@ const ShowCaseContent = styled.div`
 	}
 `;
 
+const ShowCaseContentTextWrapper = styled.div`
+	margin-left: 10px;
+`;
+
 const ShowCaseContentTitle = styled.h4`
-	text-align: center;
-    margin: 15px; 0;
+	text-align: left;
 `;
 
 const ShowCaseContentText = styled.p`
-	text-align: center;
-	width: 70%;
-`;
-
-const CtaSection = styled.div`
-	margin: 70px auto;
-	display: flex;
-	justify-content: center;
-`;
-
-const JoinBtn = styled.button`
-	background-color: #767676;
-	color: #000000;
-	border-radius: 15px;
-	padding: 15px 25px;
+	text-align: left;
 	font-size: 15px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	font-weight: 600;
+	margin-top: 5px;
+	line-height: 22px;
 `;
