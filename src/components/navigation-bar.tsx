@@ -91,12 +91,14 @@ export const NavigationBar = (props: NavigationBarProps) => {
 					<CreateMyDesignBtn
 						$bg="#222238"
 						$color="#ffffff"
+						onClick={handleToggleWaitlistModal}
 					>
 						Create My Own Design
 					</CreateMyDesignBtn>
 					<JoinOurCommunityBtn
 						$bg="#9032FF"
 						$color="#ffffff"
+						onClick={handleToggleWaitlistModal}
 					>
 						Join Our Community
 					</JoinOurCommunityBtn>

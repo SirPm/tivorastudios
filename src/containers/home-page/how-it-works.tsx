@@ -1,17 +1,12 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import React, { useMemo } from "react";
+import React from "react";
 import styled from "styled-components";
 import HIWIconSrc1 from "@/assets/icons/hiw-1.svg";
 import HIWIconSrc2 from "@/assets/icons/hiw-2.svg";
 import HIWIconSrc3 from "@/assets/icons/hiw-3.svg";
 import HIWIconSrc4 from "@/assets/icons/hiw-4.svg";
-import HIWIconSrc1Mobile from "@/assets/icons/hiw-mobile-1.svg";
-import HIWIconSrc2Mobile from "@/assets/icons/hiw-mobile-2.svg";
-import HIWIconSrc3Mobile from "@/assets/icons/hiw-mobile-3.svg";
-import HIWIconSrc4Mobile from "@/assets/icons/hiw-mobile-4.svg";
-import { useMediaQuery } from "@/hooks/use-media-query";
 
 const HOW_IT_WORKS: {
 	num: string;

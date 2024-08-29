@@ -2,14 +2,19 @@
 
 import React from "react";
 import styled from "styled-components";
-import Image from "next/image";
-import HeroBgImage from "@/assets/icons/about-us-hero-bg.svg";
+import Image, { StaticImageData } from "next/image";
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+	image: StaticImageData;
+}
+
+export const HeroSection = (props: HeroSectionProps) => {
+	const { image } = props;
+
 	return (
 		<Wrapper>
 			<Image
-				src={HeroBgImage}
+				src={image}
 				alt="about us hero background"
 			/>
 		</Wrapper>
@@ -17,10 +22,10 @@ export const HeroSection = () => {
 };
 
 const Wrapper = styled.div`
-    width: 100%;
-    
-    img {
-        width: 100%;
-        height: 100%;
-    }
+	width: 100%;
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
 `;
