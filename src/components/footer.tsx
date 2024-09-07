@@ -43,7 +43,7 @@ export const Footer = () => {
 					<JoinBtn>Join Our Community</JoinBtn>
 				</FormWrapper>
 			</Content>
-			<FooterTextWrapper>
+			<FooterTextWrapper id="footerSection">
 				<LogoAndSocials>
 					<Logo onClick={handleRouteToHomepage}>
 						<Image

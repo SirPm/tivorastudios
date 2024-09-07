@@ -71,7 +71,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
 						About Us
 					</MenuLink>
 					<MenuLink
-						href="/contact-us"
+						href="#footerSection"
 						$isactive={pathname === "/contact-us"}
 					>
 						Contact

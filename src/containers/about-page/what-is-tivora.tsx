@@ -1,13 +1,26 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { Container } from "@/components/styled-components";
 import HeaderImg1 from "@/assets/icons/about-us-header-img-1.svg";
 import HeaderImg2 from "@/assets/icons/about-us-header-img-2.svg";
+import { SuccessModal } from "@/components/success-modal";
+import { WaitListModal } from "@/components/waitlist-modal";
 
 export const WhatIsTivora = () => {
+	const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+	const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+
+	const handleToggleWaitlistModal = () => {
+		setIsWaitlistModalOpen(!isWaitlistModalOpen);
+	};
+
+	const handleToggleSuccessModal = () => {
+		setIsSuccessModalOpen(!isSuccessModalOpen);
+	};
+
 	return (
 		<Wrapper>
 			<Container>
@@ -35,7 +48,9 @@ export const WhatIsTivora = () => {
 							informed data-driven decisions. Design, create,
 							order & track the effectiveness of your packaging.
 						</Text>
-						<JoinBtn>Join the Community</JoinBtn>
+						<JoinBtn onClick={handleToggleWaitlistModal}>
+							Join the Community
+						</JoinBtn>
 					</TextWrapper>
 					<ImageWrapper>
 						<Image
@@ -49,6 +64,15 @@ export const WhatIsTivora = () => {
 					</ImageWrapper>
 				</Content>
 			</Container>
+			<WaitListModal
+				isOpen={isWaitlistModalOpen}
+				onClose={handleToggleWaitlistModal}
+				handleShowSuccessModal={handleToggleSuccessModal}
+			/>
+			<SuccessModal
+				isOpen={isSuccessModalOpen}
+				onClose={handleToggleSuccessModal}
+			/>
 		</Wrapper>
 	);
 };

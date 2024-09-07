@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import TivoraLogoLetter from "@/assets/icons/tivora-logo-letter.svg";
@@ -14,10 +14,70 @@ interface WaitListModalProps {
 
 export const WaitListModal = (props: WaitListModalProps) => {
 	const { isOpen, onClose, handleShowSuccessModal } = props;
+	const [userInfo, setUserInfo] = useState({
+		fullName: "",
+		email: "",
+	});
+	const [loading, setLoading] = useState(false);
 
-	const handleSubmit = () => {
+	const handleInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = evt.target;
+		setUserInfo({
+			...userInfo,
+			[name]: value,
+		});
+	};
+
+	const handleApiCallComplete = () => {
+		setLoading(false);
+		setUserInfo({ fullName: "", email: "" });
 		onClose();
 		handleShowSuccessModal();
+	};
+
+	const sendInfoToZohoMailDashboard = () => {
+		setLoading(true);
+		let domainName = "";
+		if (typeof window !== "undefined") {
+			domainName = window.location.hostname;
+		}
+
+		const data = {
+			SingleLine: userInfo.fullName,
+			Email: userInfo.email,
+			REFERRER_NAME: domainName,
+			ZS_IF_DOMAIN: domainName,
+		};
+
+		const url =
+			"https://forms.zohopublic.ca/toritsevalerietivora1/form/TivoraStudiosWaitlistSignUp/formperma/mGRC572_lY7FksdnK_JJkTZpRM_bot5HGFb8_ahUub0/records";
+
+		fetch(url, {
+			method: "POST",
+			mode: "no-cors",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		})
+			.then((response) => {
+				handleApiCallComplete();
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				handleApiCallComplete();
+			})
+			.catch((error) => {
+				setLoading(false);
+			});
+	};
+
+	const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+		evt.preventDefault();
+		sendInfoToZohoMailDashboard();
 	};
 
 	return (
@@ -43,15 +103,32 @@ export const WaitListModal = (props: WaitListModalProps) => {
 						Get exclusive updates, early access, and more exciting
 						news from Tivora Studios!
 					</Text>
-					<FormWrapper>
+					<FormWrapper onSubmit={handleSubmit}>
 						<InputWrapper>
-							<Input placeholder="Full Name..." />
+							<Input
+								name="fullName"
+								value={userInfo.fullName}
+								onChange={handleInputChange}
+								placeholder="Full Name..."
+								required
+								disabled={loading}
+							/>
 						</InputWrapper>
 						<InputWrapper>
-							<Input placeholder="Email Address..." />
+							<Input
+								name="email"
+								value={userInfo.email}
+								onChange={handleInputChange}
+								placeholder="Email Address..."
+								required
+								disabled={loading}
+							/>
 						</InputWrapper>
-						<SubmitBtn onClick={handleSubmit}>
-							Join the Waitlist
+						<SubmitBtn
+							type="submit"
+							disabled={loading}
+						>
+							{loading ? "Joining..." : "Join the Waitlist"}
 						</SubmitBtn>
 					</FormWrapper>
 				</Container>
@@ -106,14 +183,14 @@ const Text = styled.p`
 	}
 `;
 
-const FormWrapper = styled.div`
+const FormWrapper = styled.form`
 	margin-top: 30px;
 	width: 100%;
 	max-width: 70%;
 
-    @media screen and (max-width: 768px) {
-        max-width: 100%;
-    }
+	@media screen and (max-width: 768px) {
+		max-width: 100%;
+	}
 `;
 
 const InputWrapper = styled.div`
