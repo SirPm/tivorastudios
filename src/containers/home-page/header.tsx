@@ -56,7 +56,6 @@ export const Header = () => {
 					<span>detailed QR code analytics</span>
 				</HeaderText>
 				<HeaderCTA>
-					<InputLikeContainer />
 					<JoinOurWaitlistBtn onClick={handleToggleWaitlistModal}>
 						Join Our Waitlist
 					</JoinOurWaitlistBtn>
@@ -135,14 +134,6 @@ const HeaderCTA = styled.div`
 	align-items: center;
 	justify-content: center;
 	margin-top: 40px;
-`;
-
-const InputLikeContainer = styled.div`
-	border: 2px solid #222238;
-	width: 331px;
-	height: 47px;
-	border-radius: 18px;
-	margin-right: 20px;
 `;
 
 const JoinOurWaitlistBtn = styled.button`
