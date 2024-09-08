@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,10 +11,22 @@ import TiktokIconSrc from "@/assets/icons/tiktok.svg";
 import LogoIconSrc from "@/assets/icons/logo-desktop.svg";
 import LogoMobileIconSrc from "@/assets/icons/logo-mobile.svg";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { SuccessModal } from "./success-modal";
+import { WaitListModal } from "./waitlist-modal";
 
 export const Footer = () => {
 	const router = useRouter();
 	const isMobile = useMediaQuery("(max-width: 768px)");
+	const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
+	const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+
+	const handleToggleWaitlistModal = () => {
+		setIsWaitlistModalOpen(!isWaitlistModalOpen);
+	};
+
+	const handleToggleSuccessModal = () => {
+		setIsSuccessModalOpen(!isSuccessModalOpen);
+	};
 
 	const handleRouteToHomepage = () => {
 		router.push("/");
@@ -40,7 +52,9 @@ export const Footer = () => {
 						placeholder="youremailaddress@email.com"
 						type="email"
 					/>
-					<JoinBtn>Join Our Community</JoinBtn>
+					<JoinBtn onClick={handleToggleWaitlistModal}>
+						Join Our Community
+					</JoinBtn>
 				</FormWrapper>
 			</Content>
 			<FooterTextWrapper id="footerSection">
@@ -85,6 +99,15 @@ export const Footer = () => {
 					© tivorastudios {new Date().getFullYear()}
 				</CopyRight>
 			</FooterTextWrapper>
+			<WaitListModal
+				isOpen={isWaitlistModalOpen}
+				onClose={handleToggleWaitlistModal}
+				handleShowSuccessModal={handleToggleSuccessModal}
+			/>
+			<SuccessModal
+				isOpen={isSuccessModalOpen}
+				onClose={handleToggleSuccessModal}
+			/>
 		</Wrapper>
 	);
 };

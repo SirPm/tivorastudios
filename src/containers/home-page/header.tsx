@@ -21,16 +21,12 @@ export const Header = () => {
 	};
 
 	return (
-		<>
+		<HeaderWrapper>
 			{/* <HeroBg
 				src={HeroBgImgSrc}
 				alt="header hero bg"
 			/> */}
 			<Wrapper>
-				<SubText>
-					sustainable smart packaging solutions that prioritize
-					accurately reflecting your brand identity
-				</SubText>
 				<Title>
 					<span className="br-span">
 						Your Brand's Perfect Packaging
@@ -60,12 +56,10 @@ export const Header = () => {
 					<span>detailed QR code analytics</span>
 				</HeaderText>
 				<HeaderCTA>
-					<CreateDesignBtn onClick={handleToggleWaitlistModal}>
-						Create My Own Design
-					</CreateDesignBtn>
-					<ExploreTemplateBtn onClick={handleToggleWaitlistModal}>
-						Explore Templates
-					</ExploreTemplateBtn>
+					<InputLikeContainer />
+					<JoinOurWaitlistBtn onClick={handleToggleWaitlistModal}>
+						Join Our Waitlist
+					</JoinOurWaitlistBtn>
 				</HeaderCTA>
 			</Wrapper>
 			<WaitListModal
@@ -77,12 +71,16 @@ export const Header = () => {
 				isOpen={isSuccessModalOpen}
 				onClose={handleToggleSuccessModal}
 			/>
-		</>
+		</HeaderWrapper>
 	);
 };
 
+const HeaderWrapper = styled.div`
+	background: linear-gradient(180deg, #ffffff 0%, #e5ceff 100%);
+`;
+
 const Wrapper = styled(Container)`
-	margin: 50px auto;
+	padding: 50px 0 150px;
 	position: relative;
 
 	@media screen and (max-width: 768px) {
@@ -134,27 +132,31 @@ const HeaderText = styled.p`
 
 const HeaderCTA = styled.div`
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	margin-top: 40px;
 `;
 
-const CreateDesignBtn = styled.button`
-	background-color: #222238;
-	color: #ffffff;
+const InputLikeContainer = styled.div`
+	border: 2px solid #222238;
+	width: 331px;
+	height: 47px;
 	border-radius: 18px;
-	padding: 15px 56px;
+	margin-right: 20px;
+`;
+
+const JoinOurWaitlistBtn = styled.button`
+	background-color: transparent;
+	color: #000000;
+	border-radius: 18px;
+	padding: 13px 24px;
 	font-size: 15px;
-	border: none;
+	border: 2px solid #9032ff;
 	outline: none;
 	cursor: pointer;
-	font-weight: 600;
-`;
-
-const ExploreTemplateBtn = styled(CreateDesignBtn)`
-	background-color: #9032ff;
-	margin-top: 15px;
+	font-weight: 500;
 `;
 
 const ColoredLetters = styled.span`
-	color: #9032ff;
+	color: #000000;
 `;

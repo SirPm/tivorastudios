@@ -78,14 +78,9 @@ export const NavigationBar = (props: NavigationBarProps) => {
 					</MenuLink>
 				</LinksWrapper>
 				<OtherActionsWrapper>
-					<MyDesignsBtn onClick={handleToggleWaitlistModal}>
-						My Designs
-					</MyDesignsBtn>
-					<Image
-						src={CartIconSrc}
-						alt="cart icon"
-						onClick={handleToggleWaitlistModal}
-					/>
+					<JoinOurWaitlistBtn onClick={handleToggleWaitlistModal}>
+						Join Our Waitlist
+					</JoinOurWaitlistBtn>
 				</OtherActionsWrapper>
 				<MobileCtaWrapper $menuopen={menuOpen}>
 					<CreateMyDesignBtn
@@ -117,9 +112,7 @@ export const NavigationBar = (props: NavigationBarProps) => {
 	);
 };
 
-const Wrapper = styled.div`
-	border-bottom: 1px solid #bababa;
-`;
+const Wrapper = styled.div``;
 
 const StyledContainer = styled(Container)`
 	display: flex;
@@ -156,7 +149,7 @@ const LinksWrapper = styled.div<{ $open: boolean }>`
 const MenuLink = styled(Link)<{ $isactive: boolean }>`
 	font-weight: ${(props) => (props.$isactive ? "600" : "400")};
 	font-size: 16px;
-	color: ${(props) => (props.$isactive ? "#FFB600" : "#000000")};
+	color: ${(props) => (props.$isactive ? "#9032FF" : "#000000")};
 	text-decoration: none;
 	display: inline-block;
 	margin-right: 25px;
@@ -228,17 +221,16 @@ const Hamburger = styled.div<{ $open: boolean }>`
 	}
 `;
 
-const MyDesignsBtn = styled.button`
-	background-color: #9032ff;
-	color: #ffffff;
+const JoinOurWaitlistBtn = styled.button`
+	background-color: transparent;
+	color: #000000;
 	border-radius: 18px;
 	padding: 13px 24px;
 	font-size: 15px;
-	border: none;
+	border: 2px solid #9032ff;
 	outline: none;
 	cursor: pointer;
 	font-weight: 500;
-	margin-right: 15px;
 
 	@media screen and (max-width: 768px) {
 		border-radius: 10px;
